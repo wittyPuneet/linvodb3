@@ -3,7 +3,7 @@ var should = require('chai').should()
   , testDb = 'workspace/test1.db'
   , fs = require('fs')
   , path = require('path')
-  , _ = require('underscore')
+  , _ = require('lodash')
   , async = require('async')
   , rimraf = require('rimraf')
 //  , document = require('../lib/document')
@@ -33,7 +33,7 @@ describe('Database', function () {
       function (cb) {
         d = new Model("testDb1", { filename: testDb });
 
-        d.filename.should.equal(testDb);
+        d.filename.should.equal(path.normalize(testDb));
 
         d.reload(function (err) {
           assert.isNull(err);
@@ -133,9 +133,9 @@ describe('Database', function () {
             d.insert({ somedata: 'again' }, function (err) {
               d.find({}, function (err, docs) {
                 docs.length.should.equal(3);
-                _.pluck(docs, 'somedata').should.contain('ok');
-                _.pluck(docs, 'somedata').should.contain('another');
-                _.pluck(docs, 'somedata').should.contain('again');
+                _.map(docs, 'somedata').should.contain('ok');
+                _.map(docs, 'somedata').should.contain('another');
+                _.map(docs, 'somedata').should.contain('again');
                 done();
               });
             });

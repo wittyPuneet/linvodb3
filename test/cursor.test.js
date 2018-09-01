@@ -1,15 +1,15 @@
 var should = require('chai').should()
   , assert = require('chai').assert
-  , testDb = 'workspace/test.db'
+  , testDb =  'workspace/test.db'
   , fs = require('fs')
   , path = require('path')
-  , _ = require('underscore')
+  , _ = require('lodash')
   , async = require('async')
   , rimraf = require('rimraf')
   , Model = require('../lib/model')
   , Cursor = require('../lib/cursor')
   ;
-
+testDb = path.normalize(testDb);
 
 describe('Cursor', function () {
   var d;
@@ -21,7 +21,7 @@ describe('Cursor', function () {
       d.store.close(cb);
      },
      function (cb) {
-        rimraf(testDb, cb);
+        rimraf(path.normalize(testDb), cb);
      },
      function (cb) {
         d = new Model("testDb", { filename: testDb });
@@ -177,7 +177,7 @@ describe('Cursor', function () {
         assert.isNull(err);
 
         docs.length.should.equal(3);
-        assert.deepEqual(_.pluck(docs, "age"), [5,23,52]);
+        assert.deepEqual(_.map(docs, "age"), [5,23,52]);
         // No way to predict which results are returned of course ...
         done();
       });

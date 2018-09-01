@@ -4,14 +4,14 @@ var should = require('chai').should()
   , util = require('util')
   , fs = require('fs')
   , path = require('path')
-  , _ = require('underscore')
+  , _ = require('lodash')
   , async = require('async')
   , rimraf = require('rimraf')
   , Model = require('../lib/model')
   , Cursor = require('../lib/cursor')
   , Schemas = require('../lib/schemas')
   ;
-
+testDb=path.normalize(testDb);
 
 describe('Schema', function () {
   var d;
