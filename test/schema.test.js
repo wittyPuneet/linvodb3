@@ -83,7 +83,6 @@ describe('Schema', function () {
         done();
       });
 
-      done();
     });
 
 
