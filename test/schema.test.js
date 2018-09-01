@@ -11,7 +11,6 @@ var should = require('chai').should()
   , Cursor = require('../lib/cursor')
   , Schemas = require('../lib/schemas')
   ;
-testDb=path.normalize(testDb);
 
 describe('Schema', function () {
   var d;
@@ -27,7 +26,7 @@ describe('Schema', function () {
      },
      function (cb) {
         d = new Model("testDb", { filename: testDb });
-        d.filename.should.equal(testDb);
+        d.filename.should.equal(path.normalize(testDb));
 
         d.reload(function (err) {
           assert.isNull(err);

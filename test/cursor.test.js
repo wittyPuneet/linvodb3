@@ -9,7 +9,6 @@ var should = require('chai').should()
   , Model = require('../lib/model')
   , Cursor = require('../lib/cursor')
   ;
-testDb = path.normalize(testDb);
 
 describe('Cursor', function () {
   var d;
@@ -25,7 +24,7 @@ describe('Cursor', function () {
      },
      function (cb) {
         d = new Model("testDb", { filename: testDb });
-        d.filename.should.equal(testDb);
+        d.filename.should.equal(path.normalize(testDb));
 
         d.reload(function (err) {
           assert.isNull(err);
