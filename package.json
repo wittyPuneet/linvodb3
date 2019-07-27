@@ -1,13 +1,14 @@
 {
   "name": "linvodb3",
-  "version": "3.25.3",
+  "version": "3.25.4",
   "author": {
     "name": "Ivo Georgiev",
     "email": "ivo@linvo.com"
   },
   "contributors": [
     "Louis Chatriot",
-    "Ivo Georgiev"
+    "Ivo Georgiev",
+    "wittyPuneet"
   ],
   "description": "Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP",
   "keywords": [
